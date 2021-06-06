@@ -9,6 +9,6 @@ router.use(authController.protect);
 /* GET home page. */
 router.get('/', userController.getAllUsers);
 
-router.get('/:id', userController.getUser);
+// router.get('/:id', userController.getUser);
 
 module.exports = router;

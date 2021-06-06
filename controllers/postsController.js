@@ -29,11 +29,6 @@ function filter(value, object) {
   return object;
 }
 
-exports.checkpost = catchAsync(async (req, res, next) => {
-  const id = req.originalUrl.split('/')[2];
-  next();
-});
-
 exports.getAllPosts = catchAsync(async (req, res) => {
   let query = Post.find();
 
@@ -129,17 +124,11 @@ let mySocket = {};
 exports.getPost = catchAsync(async (req, res, next) => {
   // 1 Getting post
 
-  console.log(`user is ${req.user.email}`);
-  const { socketServer } = require('./../app');
-  // io = socket(socketServer);
+  console.log(`user is ${req.user.email} in 127`);
 
-  // io.on('connection', (socket) => {
-  //   mySocket = socket;
-
-  //   console.log('connection made');
-  // });
   const categories = await CatModel.find({});
 
+  console.log(`req.params.id 131`, req.params.id);
   const post = await Post.findById(req.params.id)
     .populate({
       path: 'comments',

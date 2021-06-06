@@ -32,14 +32,13 @@
       }
 
       /* 80px bottom margin for footer */
-      body {
-        margin-bottom: 80px;
-      }
     </style>
   </head>
 
   <body>
     <!-- HEADER -->
+
+    <%- include ('partials/nav') %>
     <header id="main-header" class="py-2 bg-primary text-white">
       <div class="container">
         <div class="row">
@@ -49,8 +48,7 @@
         </div>
       </div>
     </header>
-
-    <%- include ('partials/nav') %> <% if(!post) { %>
+    <% if(!post) { %>
     <div
       class="alert alert-danger text-center alert-dismissible fade show"
       role="alert"
@@ -74,38 +72,15 @@
     </script>
     <% } %>
 
-    <!-- SEARCH -->
-    <!-- <section id="search" class="py-4 mb-4 bg-light">
-      <div class="container">
-        <div class="row">
-          <div class="col-md-6 ml-auto">
-            <div class="input-group">
-              <input
-                type="text"
-                class="form-control"
-                placeholder="Search Posts..."
-                id="searchBtn"
-              />
-              <div class="input-group-append">
-                <button class="btn btn-primary">Search</button>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section> -->
-
     <!-- POSTS -->
     <% if (post) { %>
 
-    <section id="postsSection" class="mt-2">
+    <section id="postsSection">
       <div class="container-fluid">
         <div class="row">
           <div class="col-md-12 px-0">
-            <div class="card bg-primary text-">
-              <div
-                class="card-header text-white d-flex justify-content-between"
-              >
+            <div class="card" style="color: #000;">
+              <div class="card-header d-flex justify-content-between">
                 <h4>
                   <i class="fa fa-user"></i> Posted By :- <% if
                   (post.user.name=== userName) { %> You
@@ -138,10 +113,10 @@
                 <% } %>
               </div>
               <div class="card-body">
-                <h4 class="card-title text-light" id="postTitle">
+                <h4 class="card-title" id="postTitle">
                   <%= post.title %>
                 </h4>
-                <p class="card-text pl-4" style="color: rgb(255, 255, 255);">
+                <p class="card-text pl-4">
                   <%= post.body %>
                 </p>
               </div>
@@ -186,7 +161,7 @@
 
     <% if (post.comments.length>0) { %>
 
-    <section id="comments" class="pt-3" style="background: #ffd52e;">
+    <section id="comments" class="pt-3" style="background: #e1e4e6;">
       <div class="container-fluid" id="commentsSec">
         <h4>
           Comments
@@ -195,7 +170,7 @@
         <% for (let i = 0; i < post.comments.length; i++) { %>
         <div class="row my-0 py-0" id="<%= post.comments[i]._id %>">
           <div class="col-md-8 py-3">
-            <div class="card" style="background: #2effab;">
+            <div class="card" style="background: #fff;">
               <div class="card-header">
                 <i class="fas fa-user"></i> <%= post.comments[i].user.name %>
               </div>
@@ -203,7 +178,7 @@
                 <p class="card-text"><%= post.comments[i].body %></p>
               </div>
               <div
-                class="card-footer text-muted d-flex justify-content-between align-items-start"
+                class="card-footer text-muted flex-wrap d-flex justify-content-between align-items-start"
               >
                 <div>
                   <%= post.comments[i].getFormattedDate() %>
@@ -212,7 +187,7 @@
                 <% if(post.comments[i].user.email === user.email) { %>
                 <div
                   class="d-flex flex-wrap align-items-center justify-content-between"
-                  style="flex-basis: 55%;"
+                  style="flex-grow: 1; max-width: 330px;"
                 >
                   <button
                     class="btn-danger btn btn-sm delComment"
@@ -247,7 +222,7 @@
       </div>
     </section>
     <% } else { %>
-    <section id="comments" class="pt-3" style="background: #ffd52e;">
+    <section id="comments" class="pt-3" style="background: #e1e4e6;">
       <div class="container-fluid sr-only" id="commentsSec">
         <h4>
           Comments
@@ -330,11 +305,7 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button
-              type="button"
-              class="commentEditBtn"
-              class="btn btn-primary"
-            >
+            <button type="button" class="btn btn-primary commentEditBtn">
               Update Comment
             </button>
           </div>
@@ -345,7 +316,7 @@
     <div class="modal fade" id="editPostModal">
       <div class="modal-dialog modal-lg">
         <div class="modal-content">
-          <div class="modal-header bg-primary text-white">
+          <div class="modal-header bg-primary">
             <h5 class="modal-title">Edit Post</h5>
             <button class="close" data-dismiss="modal">
               <span>&times;</span>
