@@ -9,7 +9,7 @@
       href="/fontawesome-free-5.12.1-web/css/all.css"
       crossorigin="anonymous"
     /> -->
-     <link
+    <link
       rel="stylesheet"
       href="https://use.fontawesome.com/releases/v5.0.13/css/all.css"
       integrity="sha384-DNOHZ68U8hZfKXOrtjWvjxusGo9WQnrNx2sqG0tfsghAvtVlRW3tvkXWZh58N9jp"
@@ -25,10 +25,9 @@
   </head>
 
   <body>
-
-    <button class="btn btn-danger  d-none" id="btn1">Danger</button>
-    <button class="btn btn-warning  d-none" id="btn2">Warning</button>
-    <button class="btn btn-primary  d-none" id="btn3">Primary</button>
+    <button class="btn btn-danger d-none" id="btn1">Danger</button>
+    <button class="btn btn-warning d-none" id="btn2">Warning</button>
+    <button class="btn btn-primary d-none" id="btn3">Primary</button>
     <%- include ('partials/nav') -%>
     <!-- HEADER -->
     <header id="main-header" class="py-2 bg-primary text-white">
@@ -63,11 +62,6 @@
               <i class="fas fa-lock"></i> Change Password
             </a>
           </div>
-          <div class="col-md-3">
-            <a href="" id="delAccount" class="btn btn-danger btn-block">
-              <i class="fas fa-trash"></i> Delete Account
-            </a>
-          </div>
         </div>
       </div>
     </section>
@@ -76,7 +70,7 @@
     <section id="profile">
       <div class="container">
         <div class="row">
-          <div class="col-md-9">
+          <div class="col-md-12">
             <div class="card">
               <div class="card-header">
                 <h4>Edit Profile</h4>
@@ -168,138 +162,12 @@
               </div>
             </div>
           </div>
-          <div class="col-md-3">
-            <h3>Your Avatar</h3>
-            <img
-              src="/images/users/<%= user.image %>"
-              alt=""
-              class="d-block img-fluid mb-3"
-            />
-            <button
-              class="btn btn-primary btn-block"
-              data-toggle="modal"
-              data-target="#exampleModal"
-            >
-              Edit Image <i class="fa fa-arrow-up" aria-hidden="true"></i>
-            </button>
-            <button
-              class="btn btn-danger btn-block" 
-              data-toggle="modal"
-              data-target="#exampleModal2"
-            >
-              Delete Image <i class="fas fa-trash" aria-hidden="true"></i>
-            </button>
-          </div>
         </div>
       </div>
     </section>
 
-    <!-- Modal  -->
-    <div
-      class="modal fade"
-      id="exampleModal"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Upload Image</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          <div class="modal-body">
-            <!-- <form action="/avatar" method="POST" enctype="multipart/form-data`"> -->
-            <form >
-              <div class="form-group">
-                <label for="avatar">Choose Image</label>
-                <input
-                  class="btn"
-                  style="cursor: pointer;"
-                  type="file"
-                  accept="images/*"
-                  name="avatar"
-                  id="avatar"
-                />
-              </div>
-              <div style="float: right;">
-                <input
-                  type="submit"
-                  class="btn btn-primary mt-3 ml-auto"
-                  value="Save Changes"
-                  id="saveAvatar"
-                />
-                <button
-                  type="button"
-                  class="btn btn-secondary mt-3 ml-auto"
-                  data-dismiss="modal"
-                >
-                  Close
-                </button>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <!-- Modal  -->
-    <div
-      class="modal fade"
-      id="exampleModal2"
-      tabindex="-1"
-      role="dialog"
-      aria-labelledby="exampleModalLabel"
-      aria-hidden="true"
-    >
-      <div class="modal-dialog" role="document">
-        <div class="modal-content">
-          <div class="modal-header">
-            <h5 class="modal-title" id="exampleModalLabel">Confirm</h5>
-            <button
-              type="button"
-              class="close"
-              data-dismiss="modal"
-              aria-label="Close"
-            >
-              <span aria-hidden="true">&times;</span>
-            </button>
-          </div>
-          
-          <div class="modal-footer">
-            <form >
-              <input
-                type="submit"
-                class="btn btn-danger"
-                data-dismiss="modal"
-                value="Yes"
-                id="delAvatar"
-              >
-                
-              </input>
-              <button
-                type="button"
-                class="btn btn-secondary"
-                data-dismiss="modal"
-              >
-                Cancel
-              </button>
-            </form>
-          </div>
-        </div>
-      </div>
-    </div>
-
     <!-- FOOTER -->
-  <%- include ('partials/footer') -%>
+    <%- include ('partials/footer') -%>
 
     <!-- Change Password Modal -->
 
@@ -382,7 +250,11 @@
         </div>
       </div>
     </div>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js" integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ=" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.2/axios.min.js"
+      integrity="sha256-T/f7Sju1ZfNNfBh7skWn0idlCBcI3RwdLSS4/I7NQKQ="
+      crossorigin="anonymous"
+    ></script>
     <script
       src="https://code.jquery.com/jquery-3.3.1.min.js"
       integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="

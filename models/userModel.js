@@ -28,7 +28,6 @@ const userSchema = new mongoose.Schema({
   },
   image: {
     type: String,
-    default: 'avatar.png',
   },
   bio: {
     type: String,
@@ -48,7 +47,7 @@ const userSchema = new mongoose.Schema({
   },
   activated: {
     type: Boolean,
-    default: false,
+    default: true,
   },
   activationLink: {
     type: String,
@@ -56,6 +55,12 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.pre('save', async function (next) {
+  if (!this.image) {
+    this.image = `https://ui-avatars.com/api/?background=0D8ABC&color=fff&name=${this.name
+      .toString()
+      .split(' ')
+      .join('%20')}`;
+  }
   if (!this.isModified('password')) {
     return next();
   }

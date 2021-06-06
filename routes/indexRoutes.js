@@ -38,10 +38,6 @@ router
 router.use('/', authController.protect);
 /* GET home page. */
 
-router.get('/settings', (req, res, next) => {
-  res.render('settings', { userName: req.user.name, user: req.user });
-});
-
 router
   .route('/updatePassword')
   .patch(urlencodedParser, authController.updatePassword);
@@ -57,16 +53,6 @@ router.post(
 
   userController.saveProfile
 );
-
-router.patch(
-  '/avatar',
-  urlencodedParser,
-  userController.uploadPhoto,
-  userController.resizeAvatar,
-  userController.changeAvatar
-);
-
-router.delete('/avatar', userController.deleteAvatar);
 
 // router.route('avatar').post()
 router.get('/', indexController);

@@ -18,56 +18,6 @@ delAccount.addEventListener('click', function deleteAccount(e) {
     },
   });
 });
-saveAvatar.addEventListener('click', function deleteAccount(e) {
-  const file = document.getElementById('avatar').files[0];
-  if (!file.type.startsWith('image/')) {
-    e.preventDefault();
-    alert('Upload only image files ...');
-    return;
-  }
-  const form = new FormData();
-  form.append('avatar', file);
-  // console.log(form);
-  updateAvatar(form);
-});
-
-const updateAvatar = async (data) => {
-  try {
-    const url = 'avatar';
-
-    const res = await axios({
-      method: 'PATCH',
-      url,
-      data,
-    });
-    const btn1 = document.getElementById('btn1');
-    const btn2 = document.getElementById('btn2');
-    const btn3 = document.getElementById('btn3');
-
-    if (res.data.status === 'success') {
-      btn1.style.display = '';
-      // location.reload();
-    } else {
-      btn2.style.display = '';
-    }
-  } catch (err) {
-    btn3.style.display = '';
-    console.log('error is', err);
-  }
-};
-
-delAvatar.addEventListener('click', function deleteAccount(e) {
-  $.ajax({
-    type: 'DELETE',
-    url: '/avatar',
-    //   data: {  },
-    success: function (data) {
-      //do something with the data via front-end framework
-      // location.reload();
-      $(location).attr('href', '/profile');
-    },
-  });
-});
 
 sumbitBtn.addEventListener('click', function saveProfile(e) {
   e.preventDefault();
