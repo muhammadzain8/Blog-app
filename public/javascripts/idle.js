@@ -7,7 +7,7 @@ var inactivityTime = function () {
 
   function logout() {
     alert('You are now logged out.');
-    //location.href = 'logout.html'
+    window.location.href = '/logout';
   }
 
   function resetTimer() {
